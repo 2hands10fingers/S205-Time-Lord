@@ -1,13 +1,12 @@
 body {
   font-family: 'Nunito', sans-serif, bold;
   background-color: #0d383a;
-
 }
 
-.btn {
-  display: block;
-  cursor: pointer;
-  padding: 18px
+h3 {
+  border-bottom: black 2px dotted;
+  padding-bottom: 27px;
+  text-align: center;
 }
 
 .logo {
@@ -23,6 +22,16 @@ body {
     background-color: #ef5246;
 }
 
+.dataHere {
+  display: flex;
+  align-items: baseline;
+  padding: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .item {
   background-color: #ef5246;
   padding: 13px 30px;
@@ -32,6 +41,18 @@ body {
   width: 350px;
  font-size: x-large;
  /*height: 200px;*/
+}
+
+.item span {
+    font-weight: 600;
+}
+
+/* BUTTON */
+
+.btn {
+  display: block;
+  cursor: pointer;
+  padding: 18px
 }
 
 .hexagon {
@@ -109,11 +130,11 @@ body {
   background: inherit;
 }
 
-.dataHere {
-  display: flex;
-  align-items: baseline;
-  padding: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 695px) {
+  .timeLordTitle span {
+    display: none;
+  }
 }
