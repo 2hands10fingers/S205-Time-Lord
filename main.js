@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   // HEADERS
     var company = "square205";
-    var key = "twp_LkozdI7ALx1JseX88x8gmGvTuUCF";
+    var key = "";
 
   // BUDGETED HOURS
     var AutoQuipBudgetSEO = 120;
