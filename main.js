@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   // HEADERS
     var company = "square205";
+    // ---- ENTER YOUR TOKEN HERE ----
     var key = "";
 
   // BUDGETED HOURS
@@ -13,9 +14,10 @@ $(document).ready(function() {
 
   // HTML BLOCK BUILDERS
     var build1 = '<div class="item"><h3>';
-    var build2 = '</h3><p><b>Toal Hours Entered: </b>';
-    var build2= '</p><p>Total Hours Left: ';
-    var build3 = '</p></div>';
+    var build2 = '</h3><p>Hours Budgeted: ';
+    var build3 = '</p><p>Toal Hours Entered: ';
+    var build4 = '</p><p>Total Hours Left: ';
+    var build5 = '</p></div>';
 
   // CLASSES
     var autoQuipSec = $('.AutoQuip');
@@ -55,21 +57,21 @@ $(document).ready(function() {
     function AutoSEOCalc(data) {
       var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
       var projName = data["projects"][0]["name"];
-      autoQuipSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(AutoQuipBudgetSEO - totalHoursSum)  + build3);
+      autoQuipSec.append(build1 + projName + build2 + AutoQuipBudgetSEO +  build3 +totalHoursSum + build4 + parseInt(AutoQuipBudgetSEO - totalHoursSum) + build5);
       console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
       }
 
     function AutoDevCalc(data) {
       var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
       var projName = data["projects"][0]["name"];
-      autoQuipSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(AutoQuipBudgetWebDev - totalHoursSum)  + build3);
+      autoQuipSec.append(build1 + projName + build2 + AutoQuipBudgetWebDev +  build3 +totalHoursSum + build4 + parseInt(AutoQuipBudgetWebDev - totalHoursSum) + build5);
       console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
       }
     // TXBBQGRILLS
     function txBBQCalc(data) {
       var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
       var projName = data["projects"][0]["name"];
-      txBBQSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(txBBQBudget - totalHoursSum)  + build3);
+      txBBQSec.append(build1 + projName + build2 + txBBQBudget +  build3 +totalHoursSum + build4 + parseInt(txBBQBudget - totalHoursSum) + build5);
       console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
       }
 
