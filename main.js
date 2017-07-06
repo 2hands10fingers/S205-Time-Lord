@@ -1,54 +1,86 @@
 $(document).ready(function() {
   $('.btn').click(function(){
-    var $dataHere = $('.dataHere');
+// VARIABLES
 
+  // HEADERS
     var company = "square205";
-    var key = "";
-    var projectSlug = "projects.json?callback=?";
-    var timeEntrySlug = 'time_entries.json?callback=?&sortby=project';
-    var contractTag = $.ajax({
-      	url: 'https://' + company + '.teamwork.com/' + projectSlug,
-      	headers: {"Authorization": "BASIC " + window.btoa(key + ":xxx")},
+    var key = "twp_LkozdI7ALx1JseX88x8gmGvTuUCF";
+
+  // BUDGETED HOURS
+    var AutoQuipBudgetSEO = 120;
+    var AutoQuipBudgetWebDev = 1185;
+    var txBBQBudget = 50;
+
+  // HTML BLOCK BUILDERS
+    var build1 = '<div class="item"><h3>';
+    var build2 = '</h3><p><b>Toal Hours Entered: </b>';
+    var build2= '</p><p>Total Hours Left: ';
+    var build3 = '</p></div>';
+
+  // CLASSES
+    var autoQuipSec = $('.AutoQuip');
+    var txBBQSec = $('.TXBBQGrills');
+    var dataHere = $('.dataHere');
+
+  // SLUGS
+    var AutoQuipSEOSlug = 'projects/180206/time/total.json?callback=?';
+    var AutoQuipWebDevSlug = 'projects/179558/time/total.json?callback=?';
+    var txBBQSlug = 'projects/175562/time/total.json?callback=?';
+    // var slug = 'projects/' + id + '/time.toal.json?callback=?'
+
+  // AJAX REQUESTS
+      // AUTOQUIP
+    var AutoQuipSEOCall = $.ajax({
+        url: 'https://' + company + '.teamwork.com/' + AutoQuipSEOSlug,
+        headers: {"Authorization": "BASIC " + window.btoa(key + ":xxx")},
         dataType: 'JSON',
-        page: "1",
-        success: function(data) {
-
-          $.each(data["projects"], function(i, projects) {
-            var tagData = data["projects"][i]["tags"][0]["name"];
-            if (tagData == "Contract"){
-                  // $dataHere.append('<div class="item"><h3>' + data["projects"][i]["name"] + '</h3>' +'<p><b>Type: </b>' + tagData + '</p>' + '</div>');
-
-            }
-
-          });
-          console.log(data);
-        }
+        application: "application/json"
       });
-      $.ajax({
-        	url: 'https://' + company + '.teamwork.com/' + timeEntrySlug,
-        	headers: {"Authorization": "BASIC " + window.btoa(key + ":xxx")},
+    var AutoQuipWebDevCall = $.ajax({
+          url: 'https://' + company + '.teamwork.com/' + AutoQuipWebDevSlug,
+          headers: {"Authorization": "BASIC " + window.btoa(key + ":xxx")},
           dataType: 'JSON',
-          application: "application/json",
-          success: function(data) {
-            // Current number sum of array is ~120
-            var timeR = [];
-            var totalHours = 0;
-            $.each(data["time-entries"], function(i, projects) {
-              var timeEntries = data["time-entries"][i]["hours"];
-              totalHours += parseInt(timeEntries);
-              // for ( x = 1; x <= timeR.length; x++) {
-              //   timeR.push(timeEntries);
-              // }
-
-
-              $dataHere.append('<div class="item"><p><b>Project name: </b>' + data["time-entries"][i]["project-name"] + '</p>' +'<p><b>Task name: </b>' + data["time-entries"][i]["todo-item-name"] + '</p>' + '<p><b>Hours: </b><div class="hours">' + timeEntries + '</div></p></div>');
-              // $dataHere.append('<div class="item"><p><b>Project name: </b>' + data["time-entries"][0]["project-name"] + '</p>' +'<p><b>Task name: </b>' + data["time-entries"][0]["todo-item-name"] + '</p>' + '<p><b>Hours: </b>' + data["time-entries"][0]["hours"] + '</p></div>');
-
-            });
-
-            console.log(data);
-            console.log(totalHours);
-          }
+          application: "application/json"
         });
+      // TXBBQGRILLS
+    var txBBQCall = $.ajax({
+          url: 'https://' + company + '.teamwork.com/' + txBBQSlug ,
+          headers: {"Authorization": "BASIC " + window.btoa(key + ":xxx")},
+          dataType: 'JSON',
+          application: "application/json"
+        });
+
+// FUNCTION JUNCTION
+    // AUTOQUIP
+    function AutoSEOCalc(data) {
+      var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
+      var projName = data["projects"][0]["name"];
+      autoQuipSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(AutoQuipBudgetSEO - totalHoursSum)  + build3);
+      console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
+      }
+
+    function AutoDevCalc(data) {
+      var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
+      var projName = data["projects"][0]["name"];
+      autoQuipSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(AutoQuipBudgetWebDev - totalHoursSum)  + build3);
+      console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
+      }
+    // TXBBQGRILLS
+    function txBBQCalc(data) {
+      var totalHoursSum = data["projects"][0]["time-totals"]["total-hours-sum"];
+      var projName = data["projects"][0]["name"];
+      txBBQSec.append( build1 + projName + build2 + totalHoursSum +  + parseInt(txBBQBudget - totalHoursSum)  + build3);
+      console.log(data["projects"][0]["time-totals"]["total-hours-sum"]);
+      }
+
+
+//AJAX CALL EXECUTIONS
+    // AUTOQUIP
+      AutoQuipSEOCall.done(AutoSEOCalc);
+      AutoQuipWebDevCall.done(AutoDevCalc);
+    // TXBBQGRILLS
+      txBBQCall.done(txBBQCalc);
+    // AMC SERVICES
   });
+  // END BUTTON CLICK!
 });
