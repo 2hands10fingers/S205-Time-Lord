@@ -1,58 +1,116 @@
 body {
   font-family: 'Nunito', sans-serif, bold;
   background-color: #0d383a;
+
 }
 
-h3 {
-  border-bottom: black 2px dotted;
-  padding-bottom: 27px;
+.totals {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
   text-align: center;
+  /*padding: 15px;*/
 }
+
+.totals span {
+  width: 30%;
+}
+
 
 .logo {
   transform: translateY(21px);
 }
 
+.dividers span {
+  border-left: 1px dotted black;
+}
+
 .timeLordTitle {
     padding: 33px;
+    border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: -webkit-xxx-large;
     border: white 14px dashed;
     background-color: #ef5246;
+    box-shadow: 10px 10px 60px -25px;
 }
 
 .dataHere {
   display: flex;
-  align-items: baseline;
-  padding: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  width: 95%;
+  box-shadow: 52px 39px 80px 4px;
 }
 
 
 .item {
+  display: flex;
   background-color: #ef5246;
   padding: 13px 30px;
-  border-radius: 33px;
-  margin-left: 4px;
-  border: white 14px dashed;
-  width: 350px;
- font-size: x-large;
+  /*border-radius: 33px;*/
+  /*border: white 14px dashed;*/
+  width: 100%;
+  font-size: medium;
+  border-bottom: black 2px dotted;
+  /*margin-top: 10px;*/
  /*height: 200px;*/
 }
 
-.item span {
-    font-weight: 600;
+a.item {
+  color: black;
+  text-decoration: initial;
 }
+
+a.item:hover {
+  background-color: #ef5246 !important;
+  font-size: larger;
+}
+
+.header span {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.header .item {
+  border: none;
+  border-bottom: black 2px dotted;
+  background-color: #ffffff !important;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer {
+  width: 95%;
+
+}
+
+.footer .item {
+  background-color: white !important;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom: none;
+}
+
+
+.project {
+  width: 100%;
+  align-self: center;
+}
+
+.item:nth-child(odd) {background-color: #ffb1ab;}
+/*.item {background-color: #ffb1ab;}*/
+
+/*.item .column2 span {
+    font-weight: 600;
+}*/
 
 /* BUTTON */
 
 .btn {
   display: block;
-  cursor: pointer;
-  padding: 18px
+  /*padding: 18px*/
+
 }
 
 .hexagon {
@@ -136,5 +194,9 @@ h3 {
 @media screen and (max-width: 695px) {
   .timeLordTitle span {
     display: none;
+  }
+
+  .header span {
+    font-size: 13px;
   }
 }
