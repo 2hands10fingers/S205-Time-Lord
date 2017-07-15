@@ -1,7 +1,8 @@
 body {
   font-family: 'Nunito', sans-serif, bold;
   background-color: #0d383a;
-
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .totals {
@@ -16,9 +17,20 @@ body {
   width: 30%;
 }
 
+.deadline .month, .deadline .year, .deadline .day {
+  border-left: 0px;
+}
+
+/*.totals span:nth-child(3):not(.year) {
+  background-color: white;
+}*/
 
 .logo {
   transform: translateY(21px);
+}
+
+.makeWhite {
+  background-color: white !important;
 }
 
 .dividers span {
@@ -33,7 +45,7 @@ body {
     font-size: -webkit-xxx-large;
     border: white 14px dashed;
     background-color: #ef5246;
-    box-shadow: 10px 10px 60px -25px;
+    box-shadow: 22px 25px 49px -16px;
 }
 
 .dataHere {
@@ -46,15 +58,12 @@ body {
 
 .item {
   display: flex;
-  background-color: #ef5246;
+  background-color: #ffb1ab;
   padding: 13px 30px;
-  /*border-radius: 33px;*/
-  /*border: white 14px dashed;*/
   width: 100%;
   font-size: medium;
   border-bottom: black 2px dotted;
-  /*margin-top: 10px;*/
- /*height: 200px;*/
+  -webkit-transition: background-color 0.5s ease;
 }
 
 a.item {
@@ -63,7 +72,7 @@ a.item {
 }
 
 a.item:hover {
-  background-color: #ef5246 !important;
+  background-color: #ffffff !important;
   font-size: larger;
 }
 
@@ -98,7 +107,7 @@ a.item:hover {
   align-self: center;
 }
 
-.item:nth-child(odd) {background-color: #ffb1ab;}
+/*.item:nth-child(odd) {background-color: #ffb1ab;}*/
 /*.item {background-color: #ffb1ab;}*/
 
 /*.item .column2 span {
