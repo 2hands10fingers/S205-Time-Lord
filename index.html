@@ -2,17 +2,56 @@
 <html>
   <head>
     <title>SQUARE 205 T I M E L O R D</title>
-    <!-- <META HTTP-EQUIV="refresh" CONTENT="3600"> -->
+    <script src="https://use.typekit.net/cbb3yyn.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Date.format.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
     <script src="main.js" charset="utf-8"></script>
+    <script src="main-two.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="sorttable.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="loadingscreen.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   </head>
 <body>
-</script>
+  <div class="loading_wrap" style="position:fixed; height:100%; width:100%; overflow:hidden; top:0; left:0;">
+    <!--   Loading Graphic here -->
+</div>
+
+<div id="mega-container">
+  <!--  ADD ROW FORM -->
+  <div style="display: none;max-width:600px;" id="hidden-content-d">
+        <h2>Enter Your Project</h2>
+        <h6>...it couldn't hurt!</h6>
+    <form action="process.php" method="post">
+      <span>Project ID</span><input type="text" class="projInput" name="projID">
+        </br>
+      <span>Budgeted Hours</span> <input type="text" class="projInput" name="budget">
+        </br>
+    <div class="button-form-container">
+        <input class="subBtn" type="submit">
+        <button data-fancybox-close class="closeBtn">Cancel</button>
+      </div>
+    </form>
+      <img class="logo--small" src="logo-small.png" alt="small s205 logo"/>
+  </div>
+<!-- REMOVE ROW FORM -->
+  <div style="display: none;max-width:600px;" id="hidden-content-c">
+      <h2>Remove A Project</h2>
+      <h6>...it should feel satisfying</h6>
+    <form action="delete.php" method="post">
+      <span>Project ID</span> <input type="text" class="projInput" name="RprojID">
+        </br>
+      <div class="button-form-container">
+        <input class="subBtn" type="submit">
+        <button data-fancybox-close class="closeBtn">Cancel</button>
+      </div>
+   </form>
+      <img class="logo--small" src="logo-small.png" alt="small s205 logo"/>
+  </div>
 <span class="timeLordTitle">
-  <img class="logo" src="http://square205.com/wp-content/themes/square205/images/logo-white.png" alt=""><strong><span>&nbsp; T I M E  &nbsp; L O R D</span></strong></span>
+  <img class="logo" src="http://square205.com/wp-content/themes/square205/images/logo-white.png" alt=""><strong><span>&nbsp; T I M E  &nbsp; L O R D v1.0</span></strong></span>
 <div class="btn">
     <div class="hexagon">
       <div class="hexTop"></div>
@@ -20,68 +59,46 @@
     </div>
 </div>
 </br>
-<div class="dataHere">
-  <div class="header">
-    <div class="item" style="background-color: white;">
-      <div class="project">
-        <span>Project Title</span>
-      </div><div class="totals">
-        <span>Hours Budgeted</span>
-        <span>Hours Entered</span>
-          <span>Total Hours Left</span>
-          <span>Deadline</span>
-          <br>
-        </span>
-      </span>
-    </div>
+<div id="tools">
+  <div id="key">
+    <ul>
+      <li><span class="box makeGreen"></span> 0-25%</li>
+      <li><span class="box makeYellow"></span> 25-50%</li>
+      <li><span class="box makeOrange"></span> 50-75%</li>
+      <li><span class="box makeBurntOrange"></span> 75-90%</li>
+      <li><span class="box makeRed"></span> 90-100%</li>
+      <li><span class="box makeDarkRed"></span> >100%</li>
   </div>
+  <div class="addRow-btn">
+    <span>
+      <a data-fancybox data-options='{"src": "#hidden-content-d", "modal": true}' href="javascript:;" > &#65291; Row</a>
+    </span>
   </div>
-  <div class="AutoQuip">
-
-  </div>
-  <div class="SpotPetSalon">
-
-  </div>
-  <div class="TXBBQGrills">
-
-  </div>
-  <div class="BPublic">
-
-  </div>
-  <div class="FindYourZone">
-
-  </div>
-  <div class="TheWashFactory">
-
-  </div>
-  <div class="PodcastMovement">
-
-  </div>
-  <div class="VRSS">
-
-  </div>
-  <div class="EAS">
-
-  </div>
-  <div class="DentonFreedomHouse">
-
-  </div>
-  <div class="DentonInternet">
-
-  </div>
-  <div class="JLStudios">
-
-  </div>
-  <div class="Slowbone">
-
-  </div>
-  <div class="BigHatLimousine">
-
+  <div class="minusRow-btn">
+    <span>
+      <a data-fancybox data-options='{"src": "#hidden-content-c", "modal": true}' href="javascript:;" > - Row</a>
+    </span>
   </div>
 </div>
-<div class="footer">
-  <div class="item">
-
+<div class="dataHere">
+  <table class="sortable">
+  <thead class="header">
+    <tr class="item totals">
+      <th class="project">Project Title</th>
+      <th class="project-manager">Project Manager</th>
+      <th class="sorttable_numeric">Hours Budgeted</th>
+      <th class="sorttable_numeric">Hours Entered</th>
+      <th class="sorttable_numeric">Hours Left</th>
+      <th>Deadline</th>
+    </tr>
+  </thead>
+  <tbody class="project-container">
+      <!-- TABLES ROWS WILL GO HERE -->
+</tbody>
+</table>
+  <div class="footer">
+    <img class="logo--small" src="logo-small.png" alt="small s205 logo"/>
+  </div>
 </div>
 </div>
 </body>
