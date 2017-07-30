@@ -31,3 +31,10 @@ Time tracking table/web application to measure burn down rate and other things t
 ## How it Works
 
 Time Lord uses AJAX calls through Teamwork's API to pull the available JSON data for each project's deadline, hours entered, and deadlines assigned. All you need to do to add a row, is to enter the project ID and the budgeted hours. To use this product, you must enter the key and change your company name in the variables of "main.js". It works on your localhost or when hosted. Tested only in Google Chrome Version 59.0.3071.115 and up.
+
+-----
+Thank you and enjoy,
+
+2hands10fingers
+
+<img src="http://square205.com/wp-content/themes/square205/images/logo-secondary.png" />
