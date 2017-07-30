@@ -1,6 +1,9 @@
 # S205-Time-Lord
 Time tracking table/web application to measure burn down rate and other things through Teamwork.com's API. This project is constantly under construction.
 
+
+<img src="http://i.imgur.com/cNZwd3Y.png" />
+
 ## Features
 #### v1.0
 - Track burndown rate of fixed contract projects (budgeted hours - the time entries entered)
