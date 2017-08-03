@@ -2,17 +2,19 @@
 
 require 'connector.php';
 
-$projID = $_POST['projID'];
-$budget = $_POST['budget'];
+$projID = filter_var($_POST['projID'], FILTER_VALIDATE_INT);
+$budget = filter_var($_POST['budget'], FILTER_VALIDATE_INT);
 
-$sql = "INSERT INTO ourProjectz (projID, budget) VALUES ('$projID', '$budget')";
+$stmt = $conn->prepare("INSERT INTO ourProjects (projID, budget) VALUES (?, ?)");
+$stmt->bind_param('ii', $projID, $budget);
 
-  if ($conn->query($sql) === TRUE) {
+
+  if ($stmt->execute()) {
       header('Location: index.php');
-      die();
+      $stmt->close;
    } else {
       echo "</div class='subBanner error'>Error: " . $sql . "<br>" . $conn->error . "<span class='cancel'>X</span></div>";
   }
 
-  $conn->close();
- ?>
+?>
+
