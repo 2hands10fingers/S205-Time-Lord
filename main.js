@@ -15,7 +15,6 @@ $(document).ready(function() {
 
     function loopLog(array) {
       for (var i = 0; i < array.length; i++) {
-        // console.log(array[i]);
       }
     }
 
@@ -25,7 +24,6 @@ $(document).ready(function() {
 
     function generalAppender(theID, theClass, appendThis ) {
       projectCont.find("#" + theID + theClass).append(appendThis);
-      // console.log("#" + theID + theClass);
     }
 
     function ajaxCaller(queryString, theContext, successFunction) {
@@ -101,7 +99,9 @@ $(document).ready(function() {
         var projNameID = listHeiarchyBase["id"]
         var projMSDeadline = listHeiarchyBase["milestoneData"]["deadline"]
 
-        if (projCount == 0 || projNameList == "Project Management" || projNameList == "Project Onboarding" || projNameList == "Project Kickoff") {
+        if (projCount == 0 || projNameList == "Project Management" 
+                           || projNameList == "Project Onboarding" 
+                           || projNameList == "Project Kickoff") {
           // pass
         } else {
           dateAssign(parseInt(projNameID), " .ms-month", projMSDeadline, 5, 2)
@@ -134,12 +134,12 @@ $(document).ready(function() {
       var projName = data["projects"][0]["name"];
       var totalHoursLeft = budget - totalHoursSum;
 
-      var builder = '<tr id ="' + projID + '" class="item">'
+      var builder = '<tr id ="'+projID+'" class="item">'
 
       builder += '<td class="projectAssigned"></td>'
 
       builder += '<td class="projName project dividers">'
-      builder +=  '<a target="_blank" href="https://square205.teamwork.com/projects/' + projID + '/time">' + projName +'</a>'
+      builder +=  '<a target="_blank" href="https://square205.teamwork.com/projects/'+projID+'/time">'+projName+'</a>'
       builder += '</td>'
 
       builder += '<td class="tasklists">'
@@ -177,7 +177,7 @@ $(document).ready(function() {
       else if (totalHoursSum > budget * 0.50 && totalHoursSum <= budget * 0.75) { colorAssign('makeYellow'); }
       else if (totalHoursSum > budget || totalHoursSum > budget * 0.75 )        { colorAssign('makeRed'); }
 
-      ajaxCaller( '/projects/' +  projID + '.json?callback=?', this,  deadlineCallback)
+      ajaxCaller('/projects/' + projID + '.json?callback=?', this,  deadlineCallback)
       ajaxCaller('/projects/' + projID + '/tasklists.json?showMilestones=1', "", taskListCallback)
     }
 
@@ -195,8 +195,6 @@ $(document).ready(function() {
     ajaxCaller('/projects.json?callback=?', "", selectorBuilder)
 
     // HARD REFRESHES EVERY HOUR
-    setInterval(function() {
-      cache_clear()
-    }, 3600000);
+    setInterval(function() { cache_clear() }, 3600000);
 
 });
