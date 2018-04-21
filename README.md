@@ -5,9 +5,9 @@ Time tracking table/web application to measure burn down rate and other things t
 <img src="http://i.imgur.com/cNZwd3Y.png" />
 
 ## Features
-### 1.1
+### v1.1
 
-- See which milestone the project is currently on, how many tasks are left until it's complete, and it's deadline
+- See which milestone the project is currently on, how many tasks are left until it's complete, and its deadline
 - New redesgin
 - Removal of superflous graphics
 - Refactorization for cleaner JS code and multi-use functions
